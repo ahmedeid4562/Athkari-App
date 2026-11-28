@@ -14,8 +14,6 @@ class AzkarLocalData {
 
     final List<dynamic> azkarList = data[categoryId] ?? [];
 
-    return azkarList
-        .map((item) => AzkarModel.fromJson(item))
-        .toList();
+    return azkarList.map((item) => AzkarModel.fromJson(item)).toList();
   }
 }

@@ -26,8 +26,7 @@ class FavoritesLocalData {
     final alreadyExists = favorites.any((item) {
       final Map<String, dynamic> json = jsonDecode(item);
 
-      return json['text'] == azkar.text &&
-          json['reference'] == azkar.reference;
+      return json['text'] == azkar.text && json['reference'] == azkar.reference;
     });
 
     if (alreadyExists) return;
@@ -52,8 +51,7 @@ class FavoritesLocalData {
     favorites.removeWhere((item) {
       final Map<String, dynamic> json = jsonDecode(item);
 
-      return json['text'] == azkar.text &&
-          json['reference'] == azkar.reference;
+      return json['text'] == azkar.text && json['reference'] == azkar.reference;
     });
 
     await prefs.setStringList(_favoritesKey, favorites);

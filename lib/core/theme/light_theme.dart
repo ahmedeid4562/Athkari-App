@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../constants/app_colors.dart';
 
 class LightTheme {
@@ -24,9 +25,7 @@ class LightTheme {
       cardTheme: CardThemeData(
         color: AppColors.lightCard,
         elevation: 0,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       textTheme: const TextTheme(
         headlineLarge: TextStyle(
@@ -41,16 +40,10 @@ class LightTheme {
           color: AppColors.lightText,
           fontWeight: FontWeight.w600,
         ),
-        bodyLarge: TextStyle(
-          color: AppColors.lightText,
-        ),
-        bodyMedium: TextStyle(
-          color: AppColors.lightSecondaryText,
-        ),
+        bodyLarge: TextStyle(color: AppColors.lightText),
+        bodyMedium: TextStyle(color: AppColors.lightSecondaryText),
       ),
-      iconTheme: const IconThemeData(
-        color: AppColors.primary,
-      ),
+      iconTheme: const IconThemeData(color: AppColors.primary),
       dividerColor: Color(0xFFE7EBE5),
     );
   }

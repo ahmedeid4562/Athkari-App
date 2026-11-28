@@ -7,6 +7,8 @@ import '../../../../core/theme/theme_controller.dart';
 import '../../../azkar/presentation/view/azkar_screen.dart';
 import '../../../daily_dua/presentation/view/daily_dua_screen.dart';
 import '../../../favorites/presentation/view/favorites_screen.dart';
+import '../../../quran/presentation/view/quran_surah_screen.dart';
+import '../../../reminders/presentation/view/reminders_screen.dart';
 import '../../../settings/presentation/view/settings_screen.dart';
 import '../../../tasbeeh/presentation/view/tasbeeh_screen.dart';
 import '../view_model/home_cubit.dart';
@@ -57,21 +59,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
                     _buildHeader(context),
-                    const SizedBox(height: 28),
-                    _buildDailyVerse(context),
                     const SizedBox(height: 25),
+                    _buildDailyVerse(context),
+                    const SizedBox(height: 20),
                     _buildProgressCard(context),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 28),
                     _buildSectionTitle(
                       context,
                       'أقسام التطبيق',
                       'اختر القسم الذي تريد البدء به',
                     ),
-                    const SizedBox(height: 18),
+                    const SizedBox(height: 17),
                     _buildCategories(context),
-                    const SizedBox(height: 28),
-                    _buildDailyReminder(context),
                     const SizedBox(height: 25),
+                    _buildDailyReminder(context),
+                    const SizedBox(height: 22),
                     _buildFooter(context),
                   ]),
                 ),
@@ -97,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Text(
                     greeting,
                     style: theme.textTheme.bodyMedium?.copyWith(
-                      fontSize: 15,
+                      fontSize: 14,
                       color: theme.colorScheme.primary,
                     ),
                   );
@@ -131,16 +133,16 @@ class _HomeScreenState extends State<HomeScreen> {
           tooltip: 'الإعدادات',
         ),
         Container(
-          width: 52,
-          height: 52,
+          width: 50,
+          height: 50,
           decoration: BoxDecoration(
-            color: theme.colorScheme.primary.withValues(alpha: 0.10),
-            borderRadius: BorderRadius.circular(18),
+            color: theme.colorScheme.primary.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(17),
           ),
           child: Icon(
             Icons.mosque_rounded,
             color: theme.colorScheme.primary,
-            size: 30,
+            size: 29,
           ),
         ),
       ],
@@ -152,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
       width: double.infinity,
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(26),
+        borderRadius: BorderRadius.circular(25),
         gradient: const LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
@@ -168,20 +170,20 @@ class _HomeScreenState extends State<HomeScreen> {
               const Icon(
                 Icons.auto_awesome_rounded,
                 color: AppColors.lightGold,
-                size: 30,
+                size: 29,
               ),
-              const SizedBox(height: 18),
+              const SizedBox(height: 16),
               const Text(
                 '﴿ فَاذْكُرُونِي أَذْكُرْكُمْ ﴾',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 23,
                   fontWeight: FontWeight.bold,
                   height: 1.8,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 9),
               Text(
                 'سورة البقرة - الآية 152',
                 style: TextStyle(
@@ -189,9 +191,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontSize: 13,
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 18),
               Container(height: 1, color: Colors.white.withValues(alpha: 0.2)),
-              const SizedBox(height: 16),
+              const SizedBox(height: 15),
               const Text(
                 'اجعل لسانك رطبًا بذكر الله',
                 style: TextStyle(
@@ -228,10 +230,10 @@ class _HomeScreenState extends State<HomeScreen> {
     final progress = (_completedToday / totalAzkar).clamp(0.0, 1.0);
 
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(17),
       decoration: BoxDecoration(
         color: theme.cardColor,
-        borderRadius: BorderRadius.circular(23),
+        borderRadius: BorderRadius.circular(22),
         border: Border.all(
           color: theme.colorScheme.primary.withValues(alpha: 0.15),
         ),
@@ -242,25 +244,25 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             children: [
               Container(
-                width: 48,
-                height: 48,
+                width: 45,
+                height: 45,
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(15),
+                  color: AppColors.lightGold.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(14),
                 ),
-                child: Icon(
+                child: const Icon(
                   Icons.emoji_events_rounded,
-                  color: theme.colorScheme.primary,
+                  color: AppColors.lightGold,
                   size: 27,
                 ),
               ),
-              const SizedBox(width: 13),
+              const SizedBox(width: 12),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'إنجازات اليوم',
+                      'إنجازك اليومي',
                       style: theme.textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
@@ -275,7 +277,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 22),
+          const SizedBox(height: 19),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -289,19 +291,19 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 11),
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: LinearProgressIndicator(
               value: progress,
-              minHeight: 11,
+              minHeight: 10,
               backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.1),
               valueColor: AlwaysStoppedAnimation<Color>(
                 theme.colorScheme.primary,
               ),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 9),
           Align(
             alignment: AlignmentDirectional.centerEnd,
             child: Text(
@@ -345,52 +347,80 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildCategories(BuildContext context) {
     final categories = [
-      _CategoryItem(
+      const _CategoryItem(
+        title: 'القرآن الكريم',
+        subtitle: 'اقرأ آيات الله وتدبرها',
+        imagePath: 'assets/images/home/quran.jpg',
+        color: Color(0xFF176B55),
+        icon: Icons.menu_book_rounded,
+      ),
+      const _CategoryItem(
         title: 'أذكار الصباح والمساء',
         subtitle: 'حصّن يومك بذكر الله',
+        imagePath: 'assets/images/home/azkar.jpg',
+        color: Color(0xFF176B55),
         icon: Icons.wb_twilight_rounded,
-        backgroundIcon: Icons.wb_sunny_rounded,
-        color: const Color(0xFF176B55),
-        lightColor: const Color(0xFFE1F1E9),
       ),
-      _CategoryItem(
+      const _CategoryItem(
         title: 'السبحة الإلكترونية',
         subtitle: 'سبّح واستغفر',
-        icon: Icons.radio_button_checked_rounded,
-        backgroundIcon: Icons.circle_outlined,
-        color: const Color(0xFFC49A45),
-        lightColor: const Color(0xFFF8F0DC),
+        imagePath: 'assets/images/home/tasbeeh.jpg',
+        color: Color(0xFFC49A45),
+        icon: Icons.circle_outlined,
       ),
-      _CategoryItem(
+      const _CategoryItem(
         title: 'دعاء اليوم',
         subtitle: 'دعاء يرافق يومك',
+        imagePath: 'assets/images/home/dua.jpg',
+        color: Color(0xFF6486B5),
         icon: Icons.volunteer_activism_rounded,
-        backgroundIcon: Icons.auto_awesome_rounded,
-        color: const Color(0xFF6486B5),
-        lightColor: const Color(0xFFE6EDF7),
       ),
-      _CategoryItem(
+      const _CategoryItem(
         title: 'الأذكار المفضلة',
         subtitle: 'أذكارك المحفوظة',
+        imagePath: 'assets/images/home/favorites.jpg',
+        color: Color(0xFFBB6C78),
         icon: Icons.favorite_rounded,
-        backgroundIcon: Icons.favorite_rounded,
-        color: const Color(0xFFBB6C78),
-        lightColor: const Color(0xFFF8E8EB),
+      ),
+      const _CategoryItem(
+        title: 'التذكيرات',
+        subtitle: 'نظّم مواعيد أذكارك',
+        imagePath: 'assets/images/home/reminders.jpg',
+        color: Color(0xFF176B55),
+        icon: Icons.notifications_active_rounded,
       ),
     ];
 
-    return GridView.builder(
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: categories.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 14,
-        crossAxisSpacing: 14,
-        childAspectRatio: 0.88,
-      ),
-      itemBuilder: (context, index) {
-        return _buildCategoryCard(context, categories[index]);
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final screenWidth = constraints.maxWidth;
+
+        final double cardWidth;
+        final double cardHeight;
+
+        if (screenWidth >= 1200) {
+          cardWidth = 350;
+          cardHeight = 220;
+        } else if (screenWidth >= 800) {
+          cardWidth = (screenWidth - 28) / 3;
+          cardHeight = 205;
+        } else {
+          cardWidth = (screenWidth - 13) / 2;
+          cardHeight = 165;
+        }
+
+        return Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 13,
+          runSpacing: 13,
+          children: categories.map((item) {
+            return SizedBox(
+              width: cardWidth,
+              height: cardHeight,
+              child: _buildCategoryCard(context, item),
+            );
+          }).toList(),
+        );
       },
     );
   }
@@ -400,88 +430,114 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Material(
       color: theme.cardColor,
-      borderRadius: BorderRadius.circular(23),
+      borderRadius: BorderRadius.circular(20),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => _openCategory(context, item.title),
         child: Stack(
+          fit: StackFit.expand,
           children: [
-            Positioned(
-              top: -25,
-              left: -25,
-              child: Container(
-                width: 110,
-                height: 110,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: item.color.withValues(alpha: 0.07),
+            Image.asset(
+              item.imagePath,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [item.color.withValues(alpha: 0.8), item.color],
+                    ),
+                  ),
+                  child: Center(
+                    child: Icon(
+                      item.icon,
+                      color: Colors.white.withValues(alpha: 0.9),
+                      size: 55,
+                    ),
+                  ),
+                );
+              },
+            ),
+            DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.black.withValues(alpha: 0.25),
+                    Colors.transparent,
+                    Colors.black.withValues(alpha: 0.82),
+                  ],
+                  stops: const [0, 0.35, 1],
                 ),
               ),
             ),
             Positioned(
-              top: 35,
-              left: 20,
-              child: Icon(
-                item.backgroundIcon,
-                size: 75,
-                color: item.color.withValues(alpha: 0.07),
+              top: 10,
+              right: 10,
+              child: Container(
+                width: 37,
+                height: 37,
+                decoration: BoxDecoration(
+                  color: item.color.withValues(alpha: 0.9),
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.white.withValues(alpha: 0.7),
+                    width: 1.2,
+                  ),
+                ),
+                child: Icon(item.icon, color: Colors.white, size: 21),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+            Positioned(
+              left: 10,
+              right: 10,
+              bottom: 11,
+              child: Row(
                 children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          item.title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                            height: 1.4,
+                          ),
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          item.subtitle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.white.withValues(alpha: 0.9),
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 5),
                   Container(
-                    width: 57,
-                    height: 57,
-                    decoration: BoxDecoration(
-                      color: item.lightColor,
-                      borderRadius: BorderRadius.circular(19),
+                    width: 27,
+                    height: 27,
+                    decoration: const BoxDecoration(
+                      color: AppColors.lightGold,
+                      shape: BoxShape.circle,
                     ),
-                    child: Icon(item.icon, color: item.color, size: 31),
-                  ),
-                  const Spacer(),
-                  Text(
-                    item.title,
-                    maxLines: 2,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
+                    child: const Icon(
+                      Icons.arrow_back_rounded,
+                      color: Colors.white,
+                      size: 16,
                     ),
-                  ),
-                  const SizedBox(height: 7),
-                  Text(
-                    item.subtitle,
-                    maxLines: 2,
-                    style: theme.textTheme.bodySmall?.copyWith(fontSize: 11),
-                  ),
-                  const SizedBox(height: 12),
-                  Row(
-                    children: [
-                      Container(
-                        width: 27,
-                        height: 27,
-                        decoration: BoxDecoration(
-                          color: item.color.withValues(alpha: 0.1),
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          Icons.arrow_back_rounded,
-                          size: 15,
-                          color: item.color,
-                        ),
-                      ),
-                      const Spacer(),
-                      Container(
-                        width: 28,
-                        height: 3,
-                        decoration: BoxDecoration(
-                          color: item.color.withValues(alpha: 0.6),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                      ),
-                    ],
                   ),
                 ],
               ),
@@ -496,6 +552,9 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget? screen;
 
     switch (title) {
+      case 'القرآن الكريم':
+        screen = const QuranSurahScreen();
+        break;
       case 'أذكار الصباح والمساء':
         screen = const AzkarScreen();
         break;
@@ -507,6 +566,9 @@ class _HomeScreenState extends State<HomeScreen> {
         break;
       case 'دعاء اليوم':
         screen = const DailyDuaScreen();
+        break;
+      case 'التذكيرات':
+        screen = const RemindersScreen();
         break;
     }
 
@@ -520,50 +582,60 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildDailyReminder(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Container(
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.primary.withValues(alpha: 0.07),
-        borderRadius: BorderRadius.circular(22),
-        border: Border.all(
-          color: theme.colorScheme.primary.withValues(alpha: 0.08),
+    return InkWell(
+      borderRadius: BorderRadius.circular(22),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => const RemindersScreen()),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(17),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.primary.withValues(alpha: 0.07),
+          borderRadius: BorderRadius.circular(22),
+          border: Border.all(
+            color: theme.colorScheme.primary.withValues(alpha: 0.08),
+          ),
         ),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 53,
-            height: 53,
-            decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(17),
+        child: Row(
+          children: [
+            Container(
+              width: 49,
+              height: 49,
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Icon(
+                Icons.notifications_active_rounded,
+                size: 27,
+                color: theme.colorScheme.primary,
+              ),
             ),
-            child: Icon(
-              Icons.notifications_active_rounded,
-              size: 28,
-              color: theme.colorScheme.primary,
-            ),
-          ),
-          const SizedBox(width: 15),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'لا تنسَ ذكر الله',
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
+            const SizedBox(width: 13),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'لا تنسَ ذكر الله',
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  'اجعل الذكر عادة يومية لا تنقطع.',
-                  style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12),
-                ),
-              ],
+                  const SizedBox(height: 5),
+                  Text(
+                    'اجعل الذكر عادة يومية لا تنقطع.',
+                    style: theme.textTheme.bodyMedium?.copyWith(fontSize: 12),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+            Icon(Icons.chevron_left_rounded, color: theme.colorScheme.primary),
+          ],
+        ),
       ),
     );
   }
@@ -581,17 +653,15 @@ class _HomeScreenState extends State<HomeScreen> {
 class _CategoryItem {
   final String title;
   final String subtitle;
-  final IconData icon;
-  final IconData backgroundIcon;
+  final String imagePath;
   final Color color;
-  final Color lightColor;
+  final IconData icon;
 
   const _CategoryItem({
     required this.title,
     required this.subtitle,
-    required this.icon,
-    required this.backgroundIcon,
+    required this.imagePath,
     required this.color,
-    required this.lightColor,
+    required this.icon,
   });
 }

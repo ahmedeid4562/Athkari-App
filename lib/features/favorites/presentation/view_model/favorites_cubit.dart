@@ -38,18 +38,10 @@ class FavoritesCubit extends Cubit<FavoritesState> {
     try {
       final favorites = await _localData.getFavorites();
 
-      emit(
-        state.copyWith(
-          isLoading: false,
-          favorites: favorites,
-        ),
-      );
+      emit(state.copyWith(isLoading: false, favorites: favorites));
     } catch (_) {
       emit(
-        state.copyWith(
-          isLoading: false,
-          error: 'حدث خطأ أثناء تحميل المفضلة',
-        ),
+        state.copyWith(isLoading: false, error: 'حدث خطأ أثناء تحميل المفضلة'),
       );
     }
   }
@@ -66,9 +58,7 @@ class FavoritesCubit extends Cubit<FavoritesState> {
 
   bool isFavorite(AzkarModel azkar) {
     return state.favorites.any(
-      (item) =>
-          item.text == azkar.text &&
-          item.reference == azkar.reference,
+      (item) => item.text == azkar.text && item.reference == azkar.reference,
     );
   }
 

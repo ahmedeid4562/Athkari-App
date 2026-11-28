@@ -20,15 +20,30 @@ dependencies:
   timezone: ^0.11.2
   flutter_timezone: ^5.1.1
   share_plus: ^13.3.1
-
+  xml: ^7.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
-  uses-material-design: true
   generate: true
+  uses-material-design: true
   assets:
     - assets/data/azkar/
+    - assets/data/quran/
+    - assets/images/onboarding/
+    - assets/app_icon/
+    - assets/images/home/
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/app_icon/app_icon.png"
+  web:
+    generate: true
+    image_path: "assets/app_icon/app_icon.png"
+    background_color: "#176B55"
+    theme_color: "#176B55"

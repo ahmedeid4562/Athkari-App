@@ -44,7 +44,8 @@ class _AzkarDetailsContent extends StatelessWidget {
   void _copyZekr(BuildContext context, AzkarModel azkar) {
     Clipboard.setData(
       ClipboardData(
-        text: '${azkar.text}\n\nعدد التكرار: ${azkar.repeat}\n\nالمصدر: ${azkar.reference}',
+        text:
+            '${azkar.text}\n\nعدد التكرار: ${azkar.repeat}\n\nالمصدر: ${azkar.reference}',
       ),
     );
 
@@ -58,7 +59,8 @@ class _AzkarDetailsContent extends StatelessWidget {
   }
 
   Future<void> _shareZekr(BuildContext context, AzkarModel azkar) async {
-    final text = '''
+    final text =
+        '''
 ${azkar.text}
 
 عدد التكرار: ${azkar.repeat}

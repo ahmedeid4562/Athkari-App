@@ -11,11 +11,7 @@ class TasbeehState {
     this.target = 100,
   });
 
-  TasbeehState copyWith({
-    int? count,
-    String? selectedZekr,
-    int? target,
-  }) {
+  TasbeehState copyWith({int? count, String? selectedZekr, int? target}) {
     return TasbeehState(
       count: count ?? this.count,
       selectedZekr: selectedZekr ?? this.selectedZekr,
@@ -42,12 +38,7 @@ class TasbeehCubit extends Cubit<TasbeehState> {
   }
 
   void selectZekr(String zekr) {
-    emit(
-      state.copyWith(
-        selectedZekr: zekr,
-        count: 0,
-      ),
-    );
+    emit(state.copyWith(selectedZekr: zekr, count: 0));
   }
 
   void changeTarget(int target) {

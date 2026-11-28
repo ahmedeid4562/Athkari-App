@@ -53,28 +53,23 @@ class AzkarScreen extends StatelessWidget {
                   SliverPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     sliver: SliverGrid(
-                      delegate: SliverChildBuilderDelegate(
-                        (context, index) {
-                          return _buildCategoryCard(
-                            context,
-                            categories[index],
-                            index,
-                          );
-                        },
-                        childCount: categories.length,
-                      ),
+                      delegate: SliverChildBuilderDelegate((context, index) {
+                        return _buildCategoryCard(
+                          context,
+                          categories[index],
+                          index,
+                        );
+                      }, childCount: categories.length),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 14,
-                        crossAxisSpacing: 14,
-                        childAspectRatio: 0.88,
-                      ),
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 14,
+                            crossAxisSpacing: 14,
+                            childAspectRatio: 0.88,
+                          ),
                     ),
                   ),
-                  const SliverToBoxAdapter(
-                    child: SizedBox(height: 25),
-                  ),
+                  const SliverToBoxAdapter(child: SizedBox(height: 25)),
                 ],
               );
             },
@@ -99,9 +94,7 @@ class AzkarScreen extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           'اختر من مجموعة الأذكار اليومية واجعل ذكر الله رفيقك في كل وقت.',
-          style: theme.textTheme.bodyMedium?.copyWith(
-            height: 1.7,
-          ),
+          style: theme.textTheme.bodyMedium?.copyWith(height: 1.7),
         ),
       ],
     );
@@ -116,11 +109,7 @@ class AzkarScreen extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [
-            Color(0xFF247A60),
-            Color(0xFF176B55),
-            Color(0xFF0D493B),
-          ],
+          colors: [Color(0xFF247A60), Color(0xFF176B55), Color(0xFF0D493B)],
         ),
       ),
       child: Stack(
@@ -147,10 +136,7 @@ class AzkarScreen extends StatelessWidget {
                   SizedBox(width: 9),
                   Text(
                     'نور يومك',
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 14,
-                    ),
+                    style: TextStyle(color: Colors.white70, fontSize: 14),
                   ),
                 ],
               ),
@@ -226,9 +212,7 @@ class AzkarScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => AzkarDetailsScreen(
-                category: category,
-              ),
+              builder: (_) => AzkarDetailsScreen(category: category),
             ),
           );
         },
@@ -267,11 +251,7 @@ class AzkarScreen extends StatelessWidget {
                       color: background,
                       borderRadius: BorderRadius.circular(18),
                     ),
-                    child: Icon(
-                      category.icon,
-                      color: category.color,
-                      size: 29,
-                    ),
+                    child: Icon(category.icon, color: category.color, size: 29),
                   ),
                   const Spacer(),
                   Text(

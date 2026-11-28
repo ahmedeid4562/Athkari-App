@@ -9,10 +9,7 @@ import '../../../onboarding/presentation/view/onboarding_screen.dart';
 class SplashScreen extends StatefulWidget {
   final ThemeController themeController;
 
-  const SplashScreen({
-    super.key,
-    required this.themeController,
-  });
+  const SplashScreen({super.key, required this.themeController});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -38,14 +35,8 @@ class _SplashScreenState extends State<SplashScreen>
       curve: Curves.easeIn,
     );
 
-    _scaleAnimation = Tween<double>(
-      begin: 0.7,
-      end: 1,
-    ).animate(
-      CurvedAnimation(
-        parent: _animationController,
-        curve: Curves.easeOutBack,
-      ),
+    _scaleAnimation = Tween<double>(begin: 0.7, end: 1).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeOutBack),
     );
 
     _animationController.forward();
@@ -63,12 +54,8 @@ class _SplashScreenState extends State<SplashScreen>
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (_) => onboardingCompleted
-              ? HomeScreen(
-                  themeController: widget.themeController,
-                )
-              : OnboardingScreen(
-                  themeController: widget.themeController,
-                ),
+              ? HomeScreen(themeController: widget.themeController)
+              : OnboardingScreen(themeController: widget.themeController),
         ),
       );
     });
@@ -89,25 +76,13 @@ class _SplashScreenState extends State<SplashScreen>
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF247A60),
-              Color(0xFF176B55),
-              Color(0xFF0D493B),
-            ],
+            colors: [Color(0xFF247A60), Color(0xFF176B55), Color(0xFF0D493B)],
           ),
         ),
         child: Stack(
           children: [
-            Positioned(
-              top: -100,
-              right: -80,
-              child: _buildCircle(250),
-            ),
-            Positioned(
-              bottom: -120,
-              left: -90,
-              child: _buildCircle(280),
-            ),
+            Positioned(top: -100, right: -80, child: _buildCircle(250)),
+            Positioned(bottom: -120, left: -90, child: _buildCircle(280)),
             Center(
               child: FadeTransition(
                 opacity: _fadeAnimation,
@@ -146,10 +121,7 @@ class _SplashScreenState extends State<SplashScreen>
                       const SizedBox(height: 12),
                       const Text(
                         'رفيقك في ذكر الله',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.white70,
-                        ),
+                        style: TextStyle(fontSize: 18, color: Colors.white70),
                       ),
                       const SizedBox(height: 45),
                       Container(
@@ -172,10 +144,7 @@ class _SplashScreenState extends State<SplashScreen>
               child: Text(
                 'اللهم اجعل ألسنتنا عامرة بذكرك',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 14,
-                ),
+                style: TextStyle(color: Colors.white70, fontSize: 14),
               ),
             ),
           ],

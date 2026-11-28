@@ -12,17 +12,13 @@ class NotificationService {
 
     final timezoneInfo = await FlutterTimezone.getLocalTimezone();
 
-    tz.setLocalLocation(
-      tz.getLocation(timezoneInfo.identifier),
-    );
+    tz.setLocalLocation(tz.getLocation(timezoneInfo.identifier));
 
     const androidSettings = AndroidInitializationSettings(
       '@mipmap/ic_launcher',
     );
 
-    const settings = InitializationSettings(
-      android: androidSettings,
-    );
+    const settings = InitializationSettings(android: androidSettings);
 
     await _notifications.initialize(settings: settings);
   }
@@ -30,7 +26,8 @@ class NotificationService {
   static Future<bool> requestPermission() async {
     final androidPlugin = _notifications
         .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin>();
+          AndroidFlutterLocalNotificationsPlugin
+        >();
 
     final result = await androidPlugin?.requestNotificationsPermission();
 
@@ -56,9 +53,7 @@ class NotificationService {
     );
 
     if (scheduledDate.isBefore(now)) {
-      scheduledDate = scheduledDate.add(
-        const Duration(days: 1),
-      );
+      scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
 
     const androidDetails = AndroidNotificationDetails(
@@ -69,9 +64,7 @@ class NotificationService {
       priority: Priority.high,
     );
 
-    const details = NotificationDetails(
-      android: androidDetails,
-    );
+    const details = NotificationDetails(android: androidDetails);
 
     await _notifications.zonedSchedule(
       id: id,

@@ -8,17 +8,9 @@ class DailyDuaState {
   final DailyDuaModel? dua;
   final String? error;
 
-  const DailyDuaState({
-    this.isLoading = false,
-    this.dua,
-    this.error,
-  });
+  const DailyDuaState({this.isLoading = false, this.dua, this.error});
 
-  DailyDuaState copyWith({
-    bool? isLoading,
-    DailyDuaModel? dua,
-    String? error,
-  }) {
+  DailyDuaState copyWith({bool? isLoading, DailyDuaModel? dua, String? error}) {
     return DailyDuaState(
       isLoading: isLoading ?? this.isLoading,
       dua: dua ?? this.dua,
@@ -38,12 +30,7 @@ class DailyDuaCubit extends Cubit<DailyDuaState> {
     try {
       final dua = _localData.getDailyDua();
 
-      emit(
-        state.copyWith(
-          isLoading: false,
-          dua: dua,
-        ),
-      );
+      emit(state.copyWith(isLoading: false, dua: dua));
     } catch (_) {
       emit(
         state.copyWith(
@@ -61,9 +48,7 @@ class DailyDuaCubit extends Cubit<DailyDuaState> {
 
     final duas = _localData.getDuas();
 
-    final currentIndex = duas.indexWhere(
-      (item) => item.id == currentDua.id,
-    );
+    final currentIndex = duas.indexWhere((item) => item.id == currentDua.id);
 
     final nextIndex = (currentIndex + 1) % duas.length;
 

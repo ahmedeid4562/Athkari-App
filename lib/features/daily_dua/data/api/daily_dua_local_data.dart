@@ -37,9 +37,9 @@ class DailyDuaLocalData {
   List<DailyDuaModel> getDuas() => _duas;
 
   DailyDuaModel getDailyDua() {
-    final day = DateTime.now().difference(
-      DateTime(DateTime.now().year, 1, 1),
-    ).inDays;
+    final day = DateTime.now()
+        .difference(DateTime(DateTime.now().year, 1, 1))
+        .inDays;
 
     return _duas[day % _duas.length];
   }

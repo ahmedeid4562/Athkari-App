@@ -89,10 +89,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
       context: context,
       initialTime: currentTime,
       builder: (context, child) {
-        return Directionality(
-          textDirection: TextDirection.rtl,
-          child: child!,
-        );
+        return Directionality(textDirection: TextDirection.rtl, child: child!);
       },
     );
 
@@ -154,11 +151,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
                 CircleAvatar(
                   radius: 25,
                   backgroundColor: color.withValues(alpha: 0.12),
-                  child: Icon(
-                    icon,
-                    color: color,
-                    size: 27,
-                  ),
+                  child: Icon(icon, color: color, size: 27),
                 ),
                 const SizedBox(width: 14),
                 Expanded(
@@ -172,17 +165,11 @@ class _RemindersScreenState extends State<RemindersScreen> {
                         ),
                       ),
                       const SizedBox(height: 5),
-                      Text(
-                        subtitle,
-                        style: theme.textTheme.bodySmall,
-                      ),
+                      Text(subtitle, style: theme.textTheme.bodySmall),
                     ],
                   ),
                 ),
-                Switch(
-                  value: enabled,
-                  onChanged: onToggle,
-                ),
+                Switch(value: enabled, onChanged: onToggle),
               ],
             ),
             const Divider(height: 30),
@@ -201,9 +188,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
                     const Expanded(
                       child: Text(
                         'وقت التذكير',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: TextStyle(fontWeight: FontWeight.w600),
                       ),
                     ),
                     Text(
@@ -230,10 +215,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
     final theme = Theme.of(context);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('تذكيرات الأذكار'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('تذكيرات الأذكار'), centerTitle: true),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : ListView(
